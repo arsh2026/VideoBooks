@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history page</title>
+    <link rel="stylesheet" href="../static/stylehistory.css">
+    <link rel="stylesheet" href="../static/scroolbar.css">
+</head>
+<body>
+    <div class="homecontent">
+        <img id="decoration1"src="../static/cssImages/Ellipse 5.png" alt="" width="200px" height="200px">
+        <img id="decoration2"src="../static/cssImages/Ellipse 11.png" alt="">
+        <img id="decoration3"src="../static/cssImages/Ellipse 7.png" alt="" width="150px" height="180px">
+        <div class="centercontent">
+            <div class="homeheader">
+                <div class="leftlogo">
+                    <img id="imagelogo" src="../static/cssImages/logo.png" alt="vbooks">
+                    <!-- <h2 id="titlevideo">History</h2> -->
+                </div>
+                <div class="search_bar">
+                    <form action="/search" method="GET">
+                        <!-- <input id="searchinput" type="text" name="query" placeholder="Search your history..">
+                        <button id="searchinputbutton" type="submit">Search</button> -->
+                        <h1>HISTORY</h1>
+                    </form>
+                    <div class="previous">
+                        <a href="/landing_page"><img src="../static/cssImages/previous.png" alt="back" width="30px" height="30px"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="history_list">
+                <!-- <div class="card">
+                    <div class="imagecontainre">
+                        <video id="coverpage"src="videosample.mp4" controls=1></video>
+                    </div>
+                    <div class="storydetials">
+                        <h4>history_video</h4>
+                    </div>
+                </div> -->
+                
+            </div>
+            <div class="footerhome">
+                <a href="/generate_page"><button id="diveinbutton">Dive In</button></a>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
+        const email="{{email}}"
+        // Firebase configuration
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDuvYGS0NZQxTuLy3SNPNrTeWz2j6dvb8c",
+    authDomain: "database-ce278.firebaseapp.com",
+    databaseURL: "https://database-ce278-default-rtdb.firebaseio.com",
+    projectId: "database-ce278",
+    storageBucket: "database-ce278.appspot.com",
+    messagingSenderId: "611283671593",
+    appId: "1:611283671593:web:0973e6ca75f00f93485a38"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        var n;
+        // Function to list files in a folder
+        function listFilesInFolder(folderPath) {
+            const storageRef = ref(storage, folderPath);
+            listAll(storageRef).then(function(result) {
+                result.items.forEach(function(itemRef) {
+                    displayVideo(itemRef);
+                });
+            }).catch(function(error) {
+                console.error("Error listing files:", error);
+            });
+        }
+
+        // Function to display video details
+        function displayVideo(fileRef) {
+            getDownloadURL(fileRef).then(function(url) {
+                const videoContainer = document.createElement('div');
+                const el=document.getElementById('history_list');
+                console.log(el);
+                videoContainer.classList.add('card')
+                const video = document.createElement('div');
+                video.classList.add('imagecontainre')
+                const videoEl = document.createElement('video');
+                videoEl.setAttribute('id', 'coverpage');
+                const videodetails = document.createElement('div');
+                videodetails.classList.add('storydetials')
+                const filename = document.createElement('p');
+                const fileNameWithoutExtension = fileRef.name.split('.').slice(0, -1).join('.');
+                videoEl.src = url;
+                videoEl.controls = true;
+                filename.textContent = fileNameWithoutExtension;
+                video.appendChild(videoEl);
+                videoContainer.appendChild(video);
+                videoContainer.appendChild(filename);
+                el.appendChild(videoContainer);
+
+                videoEl.addEventListener('play', () => {
+            const videoElements = document.querySelectorAll('video');
+            videoElements.forEach(otherVideo => {
+                if (otherVideo !== videoEl && !otherVideo.paused) {
+                    otherVideo.pause();
+                }
+            });
+        });
+
+
+
+
+            }).catch(function(error) {
+                console.error("Error displaying file:", error);
+            });
+        }
+
+        
+       
+        function getNumberOfFilesInFolder(folderPath) {
+        const storageRef = ref(storage, folderPath);
+        return listAll(storageRef).then(function(result) {
+            const numFiles = result.items.length;
+            console.log("Number of files in the folder:", numFiles);
+            return numFiles;
+        }).catch(function(error) {
+            console.error("Error while fetching number of files:", error);
+            throw error; // Re-throw the error for the caller to handle
+        });
+        }
+
+    // Call the function to get the number of files in the folder
+    getNumberOfFilesInFolder(email).then(function(n) {
+        if(n==0){
+            console.log(n);
+            console.log('No video Yet')
+            const TextEl = document.createElement('h3');
+            TextEl.textContent='No Videos yet...'
+            const cont = document.getElementById('history_list');
+            cont.appendChild(TextEl);
+        }
+        else{
+            listFilesInFolder(email)
+        }
+        
+    }).catch(function(error) {
+        console.error("Error:", error);
+    });
+
+    
+    
+
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

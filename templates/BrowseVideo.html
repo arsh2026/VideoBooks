@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../static/BrowseVideo1.css">
+    <link rel="stylesheet" href="../static/BrowseVideo2.css">
+    <link rel="stylesheet" href="../static/BrowseVideo3.css"> <!-- Added custom CSS file -->
+</head>
+<body>
+    <div class="homecontent">
+        <img id="decoration1" src="../static/cssImages/Ellipse 5.png" alt="" width="200px" height="200px">
+        <img id="decoration2" src="../static/cssImages/Ellipse 11.png" alt="">
+        <img id="decoration3" src="../static/cssImages/Ellipse 7.png" alt="" width="150px" height="180px">
+        <div class="centercontent">
+            <div class="homeheader">
+                <div class="leftlogo">
+                    <img id="imagelogo" src="../static/cssImages/logo.png" alt="vbooks">
+                    <h2 id="titlevideo">Video Books</h2>
+                </div>
+                <div class="search_bar">
+                    <input id="searchInput" type="text" placeholder="Search videos..."> <!-- Changed id to match JavaScript -->
+                    <button onclick="searchVideos()">Search</button>
+                </div>
+            </div>
+            <div id="videoContainer" class="history_list"></div> <!-- Changed class to id for video container -->
+            <!-- <video id="videoPlayer" controls></video> Moved video player here -->
+            <div class="footerhome">
+                <a href="/generate_page"><button id="diveinbutton">ClipCraft</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample videos data
+        var videos = [
+            {"id": 1, "title": "Cindrella", "src": "../static/video/Cindrella.mp4"},
+            {"id": 2, "title": "Three Little Pig", "src": "../static/video/ThreeLittlePig.mp4"},
+            {"id": 3, "title": "Krishna's love for butter", "src": "../static/video/littleKrishna.mp4"},
+            {"id": 4, "title": "The Lost Pearl Necklace", "src": "../static/video/LostPearlNecklace.mp4"},
+            {"id": 5, "title": "Snow White", "src": "../static/video/SnowWhite.mp4"},
+            {"id": 6, "title": "Golden Touch", "src": "../static/video/GoldenTouch.mp4"},
+            {"id": 7, "title": "The Foolish Thief", "src": "../static/video/FoolishThief.mp4"},
+            {"id": 8, "title": "The Hardworking Boy", "src": "../static/video/HardworkingBoy.mp4"},
+            {"id": 9, "title": "Thief with change of heart", "src": "../static/video/ThiefWithChange.mp4"},
+            {"id": 10, "title": "Adventurous Cat", "src": "../static/video/AdventurousCat.mp4"},
+
+        ];
+
+        // Display all videos initially
+        displayVideos(videos);
+
+        function displayVideos(videos) {
+            var videoContainer = document.getElementById("videoContainer");
+            videoContainer.innerHTML = ""; // Clear previous content
+            videos.forEach(function(video) {
+                var videoItem = document.createElement("div");
+                videoItem.classList.add("card");
+
+                // Create video element
+                var videoElement = document.createElement("video");
+                videoElement.src = video.src;
+                videoElement.controls = true; // Add controls to the video
+
+                // Create title element
+                var titleElement = document.createElement("div");
+                titleElement.classList.add("storydetials");
+                titleElement.textContent = video.title;
+                videoElement.setAttribute('id', 'coverpage');
+                // Append video and title to the video item
+                videoItem.appendChild(videoElement);
+                videoItem.appendChild(titleElement);
+
+                // Append video item to the container
+                videoContainer.appendChild(videoItem);
+            });
+        }
+
+        function searchVideos() {
+            var searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+            var matchedVideos = videos.filter(function(video) {
+                return video.title.toLowerCase().includes(searchQuery);
+            });
+            displayVideos(matchedVideos);
+        }
+        
+        function PlayVideo(video) {
+            var videoPlayer = document.getElementById("videoPlayer");
+        
+            videoPlayer.src = video.src;
+            videoPlayer.style.display = "block";
+            videoPlayer.play();
+        }
+
+        document.getElementById("searchInput").addEventListener("input", function() {
+            searchVideos();
+        });
+ 
+        // For playing another video and pausing the current video.
+        const videoElements = document.querySelectorAll('video');
+
+        videoElements.forEach(video => {
+        video.addEventListener('play', () => {
+            videoElements.forEach(otherVideo => {
+            if (otherVideo !== video && otherVideo.paused === false) {
+                otherVideo.pause();
+            }
+            });
+        });
+        });
+
+        
+    </script>
+</body>
+</html>

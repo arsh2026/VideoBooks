@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt page</title>
+    <link rel="stylesheet" href="../static/promptsytle.css">
+    <script src="../static/prompt.js" defer></script>
+</head>
+<body>
+    <div class="homecontent">
+        <img id="decoration1"src="../static/cssImages/Ellipse 5.png" alt="" width="200px" height="200px">
+        <img id="decoration2"src="../static/cssImages/Ellipse 11.png" alt="">
+        <img id="decoration3"src="../static/cssImages/Ellipse 7.png" alt="" width="150px" height="180px">
+        <div class="centercontent">
+            <div class="homeheader">
+                <div class="leftlogo">
+                    <img id="imagelogo" src="../static/cssImages/logo.png" alt="vbooks">
+                    <h2 id="titlevideo">Video Books</h2>
+                </div>
+                <div class="rightlinks">
+                    <a href="/landing_page">Home</a>
+                </div>
+            </div>          
+            <div class="centerprompt">
+                <div class="paragraphline">
+                    <h2>Create Beautiful Stories for your Kids<br>Let them see how sky sings, birds dance and animals speak</h2>
+                </div>
+                <div class="promptinputbox">
+                    <input type="text" id="yourstory"placeholder="Enter Title of your story" required>
+                    
+                </div>
+                <div class="storydetail">
+                    <textarea name="textfiller" id="text1" cols="80" rows="4" placeholder="Enter your story prompt here..." required></textarea>
+                </div>
+                <div class="genebutton">
+                    <button id="generatebutton">Generate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <p>Generating Video...</p>
+        </div>
+      </div> 
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

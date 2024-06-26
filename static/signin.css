@@ -1,0 +1,195 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.head_container{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.white_container{
+    height: 80vh;
+    width: 80vw;
+    background-color: white;
+    border-radius: 26px;
+    /* box-shadow: 1px 1px 1px 1px rgba(148, 207, 255, 1); */
+    border: 1px solid rgba(148, 207, 255, 1);
+    display: flex;
+}
+@keyframes example {
+    from {
+        translate: 1%;}
+    to {opacity: 1;
+    translate: -250%;}
+  }
+.right_box{
+    width: 45%;
+    height: 100%;
+    background-color: rgba(148, 207, 255, 1);
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    align-items: center;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-direction:reverse;
+}
+
+.sign_in_button button{
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 1.5rem;
+    border: 2px solid white;
+    background-color: rgba(148, 207, 255, 1);
+    color: white;
+}
+
+.logo img{
+    height: 10rem;
+    width: 20rem;
+    object-fit: contain;
+}
+
+.heading h1{
+    font-size: 45px;
+    font-family: 'Poppins';
+    color: white;
+    font-weight: 500px;
+}
+
+p{
+    font-family: 'Poppins';
+    color: white;
+    text-align: center;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.left_box{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 35px;
+    align-items: center;
+    font-family: 'Poppins';
+    
+}
+
+.left_box h1{
+    font-size: 42px;
+    font-family: 'Poppins';
+    color: rgba(148, 207, 255, 1);
+    font-weight: 500px;
+}
+
+.another{
+    color: rgba(131, 126, 126, 1);
+}
+.container img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 2px solid rgba(191, 191, 191, 1);
+    font-weight: 500px;
+    object-fit: contain;
+}
+
+.logobox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.blanks{
+    margin:8px;
+    height: 53px;
+    width: 100%;
+    background-color: rgb(239, 239, 239);
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    padding-left: 10px;
+    align-items: center;
+    color: rgba(191, 191, 191, 1)
+}
+
+.blanks input{
+    border: none;
+    /* display: none; */
+    background-color: rgb(239, 239, 239);
+    font-family: 'Poppins';
+    font-size:12px;
+    width: 100%;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    gap: 5px;
+    padding-top: 25px;
+}
+#forgetpassword{
+    width: 12rem;
+    height: 3rem;
+    background-color:rgba(148, 207, 255, 1);
+    border: none;
+    border-radius: 1.5rem;
+    color:white;
+    font-family: 'Poppins';
+}
+#forgetpassword:hover{
+    background-color:#F4F8F7;
+    color: black;
+}
+
+.signinleft{
+    width: 8rem;
+    height: 3rem;
+    background-color:rgba(148, 207, 255, 1);
+    border: none;
+    border-radius: 1.5rem;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.signinleft:hover{
+    background-color:#F4F8F7;
+    color: black;
+}
+.right_box button{
+    width: 8rem;
+    height: 4rem;
+    background-color:rgba(148, 207, 255, 1);
+    border: none;
+    border-radius: 1.5rem;
+    color: white;
+    font-family: 'Poppins';
+}
+.heading h1{
+    margin: 0;
+}
+.title_line p{
+    padding: 10px;
+}
+.sign_up_button button{
+    border: white solid 1px;
+    border-radius: 30px;
+    height: 3rem;
+}
+#email,#password{
+    outline: none;
+}

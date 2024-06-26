@@ -1,0 +1,15 @@
+/* Custom scrollbar for WebKit/Blink based browsers */
+::-webkit-scrollbar {
+    margin-right: 2px;
+    width: 10px; /* Width of vertical scrollbar */
+    height: 10px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffff; /* Background color of scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2A9FFE; /* Color of scrollbar thumb */
+    border-radius: 5px; /* Radius of scrollbar thumb */
+}

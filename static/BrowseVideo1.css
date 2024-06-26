@@ -1,0 +1,74 @@
+/* custom.css */
+
+/* Style for video container */
+#videoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for individual video items */
+.card {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    width: 200px; /* Adjust width as needed */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card video {
+    width: 100%;
+    height: auto;
+}
+
+.storydetials {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style for footer */
+.footerhome {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style for search bar */
+.search_bar {
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
